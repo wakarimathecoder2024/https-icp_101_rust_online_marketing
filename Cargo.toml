@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/icp_101_online_marketers_backend"
+]
+resolver = "2"
