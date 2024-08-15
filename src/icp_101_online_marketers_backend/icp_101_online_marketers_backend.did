@@ -48,12 +48,12 @@ type RaiseAquestionAboutOurServices = record {
   created_at : nat64;
   useremail : text;
 };
-type Result = variant { Ok : text; Err : text };
-type Result_1 = variant { Ok : vec Business; Err : text };
-type Result_2 = variant { Ok : vec CommentAboutOurServices; Err : text };
-type Result_3 = variant { Ok : vec RaiseAquestionAboutOurServices; Err : text };
-type Result_4 = variant { Ok : Business; Err : text };
-type Result_5 = variant { Ok : User; Err : text };
+type Result = variant { Ok : vec Business; Err : text };
+type Result_1 = variant { Ok : vec CommentAboutOurServices; Err : text };
+type Result_2 = variant { Ok : vec RaiseAquestionAboutOurServices; Err : text };
+type Result_3 = variant { Ok : Business; Err : text };
+type Result_4 = variant { Ok : User; Err : text };
+type Result_5 = variant { Ok : text; Err : text };
 type Result_6 = variant { Ok : RaiseAquestionAboutOurServices; Err : text };
 type Result_7 = variant { Ok : CommentAboutOurServices; Err : text };
 type Result_8 = variant { Ok : EnquireAboutAbusiness; Err : text };
@@ -81,15 +81,15 @@ type UserPayload = record {
   phonenumber : text;
 };
 service : {
-  delete_job_from_josearchers : (DeletePayload) -> (Result);
-  get_all_business : () -> (Result_1) query;
-  get_all_comments : () -> (Result_2) query;
-  get_all_questions : () -> (Result_3) query;
-  register_business : (BusinessPayload) -> (Result_4);
-  register_user : (UserPayload) -> (Result_5);
-  search_for_a_business_by_name : (SearchABusinessPayload) -> (Result_4) query;
-  update_business : (UpdateBusinessPayload) -> (Result_4);
+  get_all_business : () -> (Result) query;
+  get_all_comments : () -> (Result_1) query;
+  get_all_questions : () -> (Result_2) query;
+  register_business : (BusinessPayload) -> (Result_3);
+  register_user : (UserPayload) -> (Result_4);
+  remove_your_business_from_onlinemarketers : (DeletePayload) -> (Result_5);
+  search_for_a_business_by_id : (SearchABusinessPayload) -> (Result_3) query;
+  update_business : (UpdateBusinessPayload) -> (Result_3);
   users_ask_questions_about_our_services : (QuestionPayload) -> (Result_6);
-  users_commets_about_our_services : (CommentPayload) -> (Result_7);
+  users_comments_about_our_services : (CommentPayload) -> (Result_7);
   users_enquire_about_a_business : (BusinessEnquirePayload) -> (Result_8);
 }
